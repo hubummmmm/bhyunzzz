@@ -6,7 +6,6 @@
 <title>바른생각 수학 출석체크</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: #f7f6f3;
@@ -16,206 +15,64 @@
     justify-content: center;
     padding: 24px 16px;
   }
-
-  .container {
-    width: 100%;
-    max-width: 480px;
-  }
-
-  .header {
-    margin-bottom: 20px;
-  }
-
-  .header h1 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 4px;
-  }
-
-  .date-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-  }
-
+  .container { width: 100%; max-width: 480px; }
+  .header { margin-bottom: 20px; }
+  .header h1 { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .date-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
   .date-row input[type="date"] {
-    border: 1px solid #e0ddd8;
-    border-radius: 8px;
-    padding: 7px 12px;
-    font-size: 14px;
-    color: #1a1a1a;
-    background: #fff;
-    outline: none;
-    cursor: pointer;
+    border: 1px solid #e0ddd8; border-radius: 8px; padding: 7px 12px;
+    font-size: 14px; color: #1a1a1a; background: #fff; outline: none; cursor: pointer;
   }
-
-  .date-row input[type="date"]:focus {
-    border-color: #a8a29e;
-  }
-
+  .date-row input[type="date"]:focus { border-color: #a8a29e; }
   .today-btn {
-    padding: 7px 12px;
-    border-radius: 8px;
-    border: 1px solid #e0ddd8;
-    background: #fff;
-    font-size: 13px;
-    color: #78716c;
-    cursor: pointer;
+    padding: 7px 12px; border-radius: 8px; border: 1px solid #e0ddd8;
+    background: #fff; font-size: 13px; color: #78716c; cursor: pointer;
   }
-
   .today-btn:hover { background: #f0ede9; }
-
   .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #a8a29e;
-    margin-bottom: 10px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #a8a29e; margin-bottom: 10px;
   }
-
-  .students-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
+  .students-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
   .student-card {
-    background: #fff;
-    border: 1.5px solid #e0ddd8;
-    border-radius: 12px;
-    padding: 14px 16px;
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
+    background: #fff; border: 1.5px solid #e0ddd8; border-radius: 12px;
+    padding: 14px 16px; cursor: pointer; transition: all 0.15s; user-select: none;
   }
-
-  .student-card:hover {
-    border-color: #c4b5a5;
-  }
-
-  .student-card.selected {
-    border-color: #2d6a4f;
-    background: #e8f5ef;
-  }
-
-  .student-card .name {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 6px;
-  }
-
-  .student-card.selected .name {
-    color: #1b4332;
-  }
-
-  .student-card .checks {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
+  .student-card:hover { border-color: #c4b5a5; }
+  .student-card.selected { border-color: #2d6a4f; background: #e8f5ef; }
+  .student-card .name { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+  .student-card.selected .name { color: #1b4332; }
+  .student-card .checks { display: flex; gap: 6px; flex-wrap: wrap; }
   .check-tag {
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 20px;
-    border: 1px solid #e0ddd8;
-    color: #a8a29e;
-    background: #f7f6f3;
-    cursor: pointer;
-    transition: all 0.12s;
+    font-size: 11px; padding: 3px 8px; border-radius: 20px;
+    border: 1px solid #e0ddd8; color: #a8a29e; background: #f7f6f3;
+    cursor: pointer; transition: all 0.12s;
   }
-
   .check-tag:hover { border-color: #c4b5a5; }
-
-  .check-tag.on-attend {
-    background: #2d6a4f;
-    border-color: #2d6a4f;
-    color: #fff;
-  }
-
-  .check-tag.on-hw {
-    background: #1e6091;
-    border-color: #1e6091;
-    color: #fff;
-  }
-
-  .student-card:not(.selected) .check-tag {
-    pointer-events: none;
-    opacity: 0.4;
-  }
-
-  .divider {
-    height: 1px;
-    background: #e0ddd8;
-    margin: 20px 0;
-  }
-
+  .check-tag.on-attend { background: #2d6a4f; border-color: #2d6a4f; color: #fff; }
+  .check-tag.on-hw { background: #1e6091; border-color: #1e6091; color: #fff; }
+  .student-card:not(.selected) .check-tag { pointer-events: none; opacity: 0.4; }
+  .divider { height: 1px; background: #e0ddd8; margin: 20px 0; }
   .summary {
-    background: #fff;
-    border: 1px solid #e0ddd8;
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    min-height: 52px;
+    background: #fff; border: 1px solid #e0ddd8; border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 16px; min-height: 52px;
   }
-
-  .summary-empty {
-    font-size: 13px;
-    color: #c4b5a5;
-    text-align: center;
-    padding: 4px 0;
-  }
-
-  .summary-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px 0;
-    font-size: 13px;
-  }
-
+  .summary-empty { font-size: 13px; color: #c4b5a5; text-align: center; padding: 4px 0; }
+  .summary-row { display: flex; align-items: center; justify-content: space-between; padding: 4px 0; font-size: 13px; }
   .summary-row .sname { color: #1a1a1a; font-weight: 500; }
   .summary-row .stags { display: flex; gap: 4px; }
-
-  .stag {
-    font-size: 11px;
-    padding: 2px 7px;
-    border-radius: 20px;
-  }
-
+  .stag { font-size: 11px; padding: 2px 7px; border-radius: 20px; }
   .stag.attend { background: #e8f5ef; color: #2d6a4f; }
   .stag.absent { background: #fce8e8; color: #c0392b; }
   .stag.hw { background: #e8f0fb; color: #1e6091; }
-
   .save-btn {
-    width: 100%;
-    padding: 13px;
-    background: #2d6a4f;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s;
+    width: 100%; padding: 13px; background: #2d6a4f; color: #fff;
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background 0.15s;
   }
-
   .save-btn:hover { background: #245a42; }
   .save-btn:disabled { background: #c4b5a5; cursor: not-allowed; }
-
-  .status {
-    margin-top: 10px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    display: none;
-  }
-
+  .status { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 13px; display: none; }
   .status.loading { display: block; background: #f0ede9; color: #78716c; }
   .status.success { display: block; background: #e8f5ef; color: #1b4332; }
   .status.error   { display: block; background: #fce8e8; color: #7b2424; }
@@ -223,7 +80,6 @@
 </head>
 <body>
 <div class="container">
-
   <div class="header">
     <h1>📋 출석 체크</h1>
     <div class="date-row">
@@ -233,7 +89,6 @@
   </div>
 
   <p class="section-label">수업 학생 선택</p>
-
   <div class="students-grid" id="studentGrid"></div>
 
   <div class="divider"></div>
@@ -245,13 +100,15 @@
 
   <button class="save-btn" id="saveBtn" onclick="save()" disabled>노션에 저장</button>
   <div class="status" id="status"></div>
-
 </div>
 
 <script>
-const STUDENTS = ["이연서", "김서현", "최연우", "김민규"];
-const DB_SOURCE = "collection://3528ec9c-cffb-804d-ae13-000b058d4e53";
+// ✏️ 아래 토큰을 본인 노션 integration 토큰으로 교체하세요
+const NOTION_TOKEN = "https://app.notion.com/p/3528ec9ccffb80abb3e9c947e6023fb3?source=copy_link";
+// ✏️ 학생별 출석부 DB ID
+const DB_ID = "3528ec9ccffb804dae13000b058d4e53";
 
+const STUDENTS = ["이연서", "김서현", "최연우", "김민규"];
 const state = {};
 STUDENTS.forEach(n => { state[n] = { selected: false, attend: false, hw: false }; });
 
@@ -259,27 +116,19 @@ function setToday() {
   const d = new Date();
   document.getElementById('dateInput').value = d.toISOString().split('T')[0];
 }
-
-function getDate() {
-  return document.getElementById('dateInput').value;
-}
+function getDate() { return document.getElementById('dateInput').value; }
 
 function toggleStudent(name) {
   state[name].selected = !state[name].selected;
-  if (!state[name].selected) {
-    state[name].attend = false;
-    state[name].hw = false;
-  }
+  if (!state[name].selected) { state[name].attend = false; state[name].hw = false; }
   render();
 }
-
 function toggleAttend(e, name) {
   e.stopPropagation();
   if (!state[name].selected) return;
   state[name].attend = !state[name].attend;
   render();
 }
-
 function toggleHw(e, name) {
   e.stopPropagation();
   if (!state[name].selected) return;
@@ -290,7 +139,6 @@ function toggleHw(e, name) {
 function render() {
   const grid = document.getElementById('studentGrid');
   grid.innerHTML = '';
-
   STUDENTS.forEach(name => {
     const s = state[name];
     const card = document.createElement('div');
@@ -301,8 +149,7 @@ function render() {
       <div class="checks">
         <span class="check-tag ${s.attend ? 'on-attend' : ''}" onclick="toggleAttend(event,'${name}')">출석</span>
         <span class="check-tag ${s.hw ? 'on-hw' : ''}" onclick="toggleHw(event,'${name}')">과제</span>
-      </div>
-    `;
+      </div>`;
     grid.appendChild(card);
   });
 
@@ -313,14 +160,11 @@ function render() {
   } else {
     summary.innerHTML = selected.map(name => {
       const s = state[name];
-      const attendTag = s.attend
-        ? `<span class="stag attend">출석</span>`
-        : `<span class="stag absent">결석</span>`;
+      const attendTag = s.attend ? `<span class="stag attend">출석</span>` : `<span class="stag absent">결석</span>`;
       const hwTag = s.hw ? `<span class="stag hw">과제완료</span>` : '';
       return `<div class="summary-row"><span class="sname">${name}</span><div class="stags">${attendTag}${hwTag}</div></div>`;
     }).join('');
   }
-
   document.getElementById('saveBtn').disabled = selected.length === 0 || !getDate();
 }
 
@@ -335,47 +179,37 @@ async function save() {
   status.className = 'status loading';
   status.textContent = '저장 중...';
 
-  const lines = selected.map(name => {
-    const s = state[name];
-    return `- ${name}: 출석=${s.attend ? '예' : '아니오'}, 과제완료=${s.hw ? '예' : '아니오'}`;
-  }).join('\n');
-
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 1000,
-        mcp_servers: [{ type: "url", url: "https://mcp.notion.com/mcp", name: "notion-mcp" }],
-        system: `You are a Notion assistant. Create pages in the "학생별 출석부" database (data source: ${DB_SOURCE}).
+    // 각 학생마다 노션 DB에 페이지 생성
+    const results = await Promise.all(selected.map(name => {
+      const s = state[name];
+      return fetch(`https://api.notion.com/v1/pages`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${NOTION_TOKEN}`,
+          'Content-Type': 'application/json',
+          'Notion-Version': '2022-06-28'
+        },
+        body: JSON.stringify({
+          parent: { database_id: DB_ID },
+          properties: {
+            '이름': { title: [{ text: { content: name } }] },
+            '날짜': { date: { start: date } },
+            '출석': { checkbox: s.attend }
+          }
+        })
+      });
+    }));
 
-Schema:
-- 이름: title (student name)
-- date:날짜:start: ISO date string
-- date:날짜:is_datetime: 0
-- 출석: checkbox (__YES__ or __NO__)
-
-For each student, create one page. Respond ONLY with JSON: {"success": true, "count": N} or {"success": false, "error": "reason"}`,
-        messages: [{
-          role: "user",
-          content: `날짜 ${date}로 다음 학생들의 출석 기록을 학생별 출석부 DB에 추가해줘:\n${lines}\n\nJSON만 응답해.`
-        }]
-      })
-    });
-
-    const data = await res.json();
-    const text = (data.content || []).map(i => i.text || '').join('');
-    const match = text.match(/\{[\s\S]*\}/);
-    const result = match ? JSON.parse(match[0]) : null;
-
-    if (result && result.success) {
+    const allOk = results.every(r => r.ok);
+    if (allOk) {
       status.className = 'status success';
-      status.textContent = `✓ ${result.count || selected.length}명 저장 완료! (${date})`;
+      status.textContent = `✓ ${selected.length}명 저장 완료! (${date})`;
       selected.forEach(n => { state[n] = { selected: false, attend: false, hw: false }; });
       render();
     } else {
-      throw new Error(result?.error || '저장 실패');
+      const errors = await Promise.all(results.filter(r => !r.ok).map(r => r.json()));
+      throw new Error(errors[0]?.message || '저장 실패');
     }
   } catch (e) {
     status.className = 'status error';
